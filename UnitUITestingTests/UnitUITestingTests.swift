@@ -10,26 +10,92 @@ import XCTest
 
 final class UnitUITestingTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testContactListApiResponseNil() {
+        
+        let ex = expectation(description: "testContactListApiResponseNil")
+        
+        AFHttp.get(url: AFHttp.API_CONTACT_LIST, params: AFHttp.paramsEmpty(), handler: { response in
+            switch response.result {
+            case .success:
+                XCTAssertNotNil(response)
+                ex.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error)
+                ex.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                XCTFail("Error: \(error)")
+            }
+        }
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testContactDeleteApiResponseIs404() {
+        
+        let ex = expectation(description: "testContactDeleteApiResponseIs404")
+        
+        AFHttp.del(url: AFHttp.API_CONTACT_DELETE + "1", params: AFHttp.paramsEmpty(), handler: { response in
+            switch response.result {
+            case .success:
+                ex.fulfill()
+            case .failure(let error):
+                XCTAssertEqual(error.responseCode, 404)
+                ex.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                XCTFail("Error: \(error)")
+            }
+        }
+        
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testContactCreateApiResponseDone() {
+        let ex = expectation(description: "testContactCreateApiResponseDone")
+        
+        AFHttp.post(url: AFHttp.API_CONTACT_CREATE, params: AFHttp.paramsPostCreate(contact: Contact(id: "", name: "1", number: "1")), handler: { response in
+            switch response.result {
+            case .success:
+                let contact = try! JSONDecoder().decode(Contact.self, from: response.data!)
+                XCTAssertEqual(contact.name, "1")
+                ex.fulfill()
+            case .failure(let error):
+                print(error)
+                ex.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                XCTFail("Error: \(error)")
+            }
+        }
+        
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testContactEditApiResponseDone() {
+        let ex = expectation(description: "testContactEditApiResponseDone")
+        
+        AFHttp.put(url: AFHttp.API_CONTACT_UPDATE + "6", params: AFHttp.paramsPostUpdate(contact: Contact(id: "", name: "2", number: "2")), handler: { response in
+            switch response.result {
+            case .success:
+                let contact = try! JSONDecoder().decode(Contact.self, from: response.data!)
+                XCTAssertEqual(contact.name, "2")
+                ex.fulfill()
+            case .failure(let error):
+                XCTAssertEqual(error.responseCode, 404)
+                ex.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                XCTFail("Error: \(error)")
+            }
         }
     }
 

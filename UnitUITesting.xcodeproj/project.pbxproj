@@ -21,6 +21,8 @@
 		6484921B2972695B00E11A55 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484921A2972695B00E11A55 /* Contact.swift */; };
 		6484921C2972695B00E11A55 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484921A2972695B00E11A55 /* Contact.swift */; };
 		6484921D2972695B00E11A55 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6484921A2972695B00E11A55 /* Contact.swift */; };
+		64E1611929767C7800C625C5 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E1611829767C7800C625C5 /* ContactCell.swift */; };
+		64E1611B29767CCF00C625C5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E1611A29767CCF00C625C5 /* ViewModel.swift */; };
 		99D56839FD073A460AD106C7 /* Pods_UnitUITesting_UnitUITestingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D3C796C54A85360AEE81C6 /* Pods_UnitUITesting_UnitUITestingUITests.framework */; };
 		D49428DF77FB7D36F78C29A5 /* Pods_UnitUITestingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA4217F130506BF565B1E1 /* Pods_UnitUITestingTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,8 @@
 		648492072972690A00E11A55 /* UnitUITestingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitUITestingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		648492152972693C00E11A55 /* AFHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHttp.swift; sourceTree = "<group>"; };
 		6484921A2972695B00E11A55 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		64E1611829767C7800C625C5 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		64E1611A29767CCF00C625C5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		79D3C796C54A85360AEE81C6 /* Pods_UnitUITesting_UnitUITestingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitUITesting_UnitUITestingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CB38DA65C02AE7C4FCD575 /* Pods-UnitUITesting-UnitUITestingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitUITesting-UnitUITestingUITests.release.xcconfig"; path = "Target Support Files/Pods-UnitUITesting-UnitUITestingUITests/Pods-UnitUITesting-UnitUITestingUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99AE97E2B853DC749FB3972B /* Pods-UnitUITestingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitUITestingTests.release.xcconfig"; path = "Target Support Files/Pods-UnitUITestingTests/Pods-UnitUITestingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,12 +133,14 @@
 		648491E92972690800E11A55 /* UnitUITesting */ = {
 			isa = PBXGroup;
 			children = (
+				64E1611729767C6800C625C5 /* cells */,
 				648492192972695400E11A55 /* model */,
 				648492142972691600E11A55 /* network */,
 				648491EA2972690800E11A55 /* UnitUITestingApp.swift */,
 				648491EC2972690800E11A55 /* ContentView.swift */,
 				648491EE2972690A00E11A55 /* Assets.xcassets */,
 				648491F02972690A00E11A55 /* Preview Content */,
+				64E1611A29767CCF00C625C5 /* ViewModel.swift */,
 			);
 			path = UnitUITesting;
 			sourceTree = "<group>";
@@ -180,6 +186,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		64E1611729767C6800C625C5 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				64E1611829767C7800C625C5 /* ContactCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		FC8D4547D68C9088895F2EE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +204,6 @@
 				E24BC3B5DCB5E987CE5D1DB2 /* Pods-UnitUITestingTests.debug.xcconfig */,
 				99AE97E2B853DC749FB3972B /* Pods-UnitUITestingTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -432,9 +445,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64E1611929767C7800C625C5 /* ContactCell.swift in Sources */,
 				6484921B2972695B00E11A55 /* Contact.swift in Sources */,
 				648492162972693C00E11A55 /* AFHttp.swift in Sources */,
 				648491ED2972690800E11A55 /* ContentView.swift in Sources */,
+				64E1611B29767CCF00C625C5 /* ViewModel.swift in Sources */,
 				648491EB2972690800E11A55 /* UnitUITestingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
